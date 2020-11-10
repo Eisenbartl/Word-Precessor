@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-window {
+  display: flex;
+}
+
+// component styles
+@import "./partials/sideMenu";
+@import "./partials/documentContainer";
