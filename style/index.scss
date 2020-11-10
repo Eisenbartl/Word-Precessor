@@ -1,13 +1,13 @@
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
-.main-window {
-  display: flex;
-}
+// color palette: #011f4b • #03396c • #005b96 • #6497b1 • #b3cde0
 
 // component styles
+@import "./partials/mainWindow";
 @import "./partials/sideMenu";
 @import "./partials/documentContainer";
+@import "./partials/toolBar";

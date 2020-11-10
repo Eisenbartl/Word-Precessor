@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-const DocumentContainer = ({ saveText }) => {
+const DocumentContainer = ({ SaveFile }) => {
     const [value, setValue] = useState('')
 
-    const handleSave = e => {
+    const saveDocument = e => {
         e.preventDefault();
         if(!value) return;
-        saveText(value);
+        SaveFile(value);
     }
 
     return (
-        <form className='page-box' onSubmit={handleSave}>
+        <form className='document-container' onSubmit={saveDocument}>
             <textarea
                 className='input'
                 value={value}

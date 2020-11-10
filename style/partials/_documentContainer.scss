@@ -1,15 +1,24 @@
-.page-box {
-  background: #d3d3d3;
-  height: 100vh;
-  padding: 20px;
-  width: 100%;
+.document-container {
+  background: #f5f5f5;
+  // max-height: 100vh;
+  padding-top: 40px;
+  // padding: 20px;
+  // width: 100%;
 
   textarea {
-    margin: auto;
+    // background: transparent;
+    border: 3px solid #ececec;
+    border-radius: 3px;
     display: flex;
-    min-height: 90vh;
-    padding: 10px;
+    font-size: 16px;
+    // font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
+    margin: auto;
+    height: 500px;
+    outline: none;
+    overflow-y: inherit;
+    padding: 40px 50px;
     resize: none;
-    width: 80%;
+    width: 820px;
   }
 }

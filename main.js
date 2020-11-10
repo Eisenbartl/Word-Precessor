@@ -16,7 +16,7 @@ app.on('ready', function () {
     });
 
     // open dev tools
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     // load html into window
     mainWindow.loadURL(url.format({
