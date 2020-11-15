@@ -11,11 +11,16 @@ const DocumentContainer = ({ SaveFile }) => {
 
     return (
         <form className='document-container' onSubmit={saveDocument}>
-            <textarea
+            {/* <textarea
                 className='input'
                 value={value}
                 onChange={e => setValue(e.target.value)}
-            />
+            /> */}
+            <div 
+                contentEditable='true'
+                className='input'
+            >
+            </div>
             <button type='submit'>save</button>
         </form>
     )

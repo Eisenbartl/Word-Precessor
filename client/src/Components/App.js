@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import FileSelector from './FileSelector';
 
+// const showFiles = require('../../../utils/displayFiles')
+
+// import {fromEvent} from 'file-selector';
 import SaveFile from '../../../utils/saveToDevice';
 
 // components
@@ -8,8 +12,8 @@ import SideMenu from './SideMenu';
 import DocumentContainer from './DocumentContainer';
 
 const App = () => {
-    const [visible, setDocVisibility] = useState(true);
-
+    const [visible, setDocVisibility] = useState(false);
+    
         return (
             <div className='main-window'>
                 <SideMenu />
@@ -20,7 +24,7 @@ const App = () => {
                     { visible === true ? (
                         <DocumentContainer SaveFile={SaveFile}/>
                     ):
-                        <input type='file'/>
+                        <FileSelector/>
                     }
                 </div>
             </div>
