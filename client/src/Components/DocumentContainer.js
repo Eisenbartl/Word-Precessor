@@ -6,7 +6,12 @@ const DocumentContainer = ({ SaveFile }) => {
     const saveDocument = e => {
         e.preventDefault();
         if(!value) return;
-        SaveFile(value);
+        // SaveFile(value);
+        const testFile = {
+            chapter: 'chapter one',
+            content: value
+        }
+        console.log(testFile)
     }
 
     return (
