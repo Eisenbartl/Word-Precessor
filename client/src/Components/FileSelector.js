@@ -9,15 +9,15 @@ const FileSelector = props => {
         e.preventDefault()
         const reader = new FileReader()
         reader.onload = async (e) => { 
-        //   const text = (e.target.result)
-        //   const content = JSON.parse(text);
-        //   let doc = document.getElementById('output');
-        //   doc.textContent = content.content;
+          const text = (e.target.result)
+          const content = JSON.parse(text);
+          let doc = document.getElementById('output');
+          doc.textContent = content.content;
 
             console.log('hello')
         };
-        // reader.readAsText(e.target.files[0])
-        console.log(e.target)
+        reader.readAsText(e.target.files[0])
+        // console.log(e.target)
       }
 
 
@@ -28,8 +28,8 @@ const FileSelector = props => {
                 type="file" 
                 name="inputfile" 
                 id="input-file"
-                // onChange={(event) => { showFile(event) }}
-                onChange={(event) => {openFile(event) }}
+                onChange={(event) => { showFile(event) }}
+                // onChange={(event) => {openFile(event) }}
             />
         </div>
     )
