@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
+const fs = require('../../../utils/saveToDevice');
 
-const DocumentContainer = ({ SaveFile }) => {
-    const [value, setValue] = useState('')
+const DocumentContainer = (props) => {
+    // const [value, setValue] = useState('');
 
     const saveDocument = e => {
         e.preventDefault();
-        if(!value) return;
-        // SaveFile(value);
+        // setValue(e.target.value);
+        // if(!value) return;
+
         const testFile = {
             chapter: 'chapter one',
             content: value
         }
-        console.log(testFile)
+
+        fs(testFile)
     }
 
     return (
         <form className='document-container' onSubmit={saveDocument}>
+        {/* <form className='document-container'> */}
             <textarea
                 className='input'
-                value={value}
-                onChange={e => setValue(e.target.value)}
+                id = 'output'
+                onChange={e => props.onChange(e.target.value)}
             />
+            
             <button type='submit'>save</button>
         </form>
     )

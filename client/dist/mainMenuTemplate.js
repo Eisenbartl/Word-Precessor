@@ -1,6 +1,10 @@
-const { app } = require('electron');
+const { app, BrowserWindow, MenuItem } = require('electron');
 const electron = require('electron');
 const {Menu} = electron;
+
+// const open = require('../../client/src/Components/FileSelector')
+
+
 
 // create menu template
 const mainMenuTemplate = [
@@ -8,7 +12,16 @@ const mainMenuTemplate = [
         label: 'File',
         submenu: [
             {
-                label: 'New'
+                label: 'New',
+                // click() {
+                //     // ChooseFile.click()
+                //     if (typeof window !== 'undefined') {
+                //         const ChooseFile = document.getElementById('get-file');
+                //         ChooseFile.click()
+                //     }
+                    
+                    
+                // }
             },
             {
                 label: 'Open'

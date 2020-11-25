@@ -6,7 +6,8 @@
 
 body {
   height: auto;
-  background: blue;
+  overflow: hidden;
+  // background: blue;
 }
 
 // color palette: #011f4b • #03396c • #005b96 • #6497b1 • #b3cde0
@@ -15,4 +16,5 @@ body {
 @import "./partials/mainWindow";
 @import "./partials/sideMenu";
 @import "./partials/documentContainer";
+@import "./partials/topBar";
 @import "./partials/toolBar";
