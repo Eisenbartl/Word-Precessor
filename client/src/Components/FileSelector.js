@@ -1,19 +1,20 @@
 import React, {useState} from 'react'
 
-const FileSelector = () => {
+const FileSelector = (props) => {
     // const [file, setFile] = useState('');
 
    const showFile = async (e) => {
         e.preventDefault()
         const reader = new FileReader()
         reader.onload = async (e) => { 
-          const text = (e.target.result)
+          const text = (JSON.parse(e.target.result));
           console.log(text)
+          props.onChange(text)
+          // display opened file
           let doc = document.getElementById('output');
-          doc.textContent = text;
-        // data = text
+          doc.textContent = text.content;
         };
-        reader.readAsText(e.target.files[0])
+        reader.readAsText(e.target.files[0]);
       }
 
     return (
@@ -22,9 +23,10 @@ const FileSelector = () => {
                 type="file" 
                 name="inputfile" 
                 id="input-file"
-                onChange={(event) => { showFile(event) }}
+                // onChange={(event) => { props.onChange(event.target.value); showFile(event) }}
+                onChange={(event) =>  showFile(event) }
             />
-            <p id='output'></p>
+            {/* <p id='output'></p> */}
         </div>
     )
 }

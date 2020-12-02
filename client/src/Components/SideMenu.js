@@ -19,16 +19,15 @@ const AddChapterForm = ({addChapter}) => {
     )
 }
 
-const SideMenu = () => {
+const SideMenu = props => {
     const [chapters, createChapters] = useState([
         {
-            title: 'chapter one'
+            title: 'some chapter'
         }
     ]);
 
     const addChapter = title => {
         const newChapters = [...chapters, {title}];
-
         createChapters(newChapters);
     }
 

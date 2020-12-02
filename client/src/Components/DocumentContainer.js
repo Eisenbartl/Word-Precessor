@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
+const FileSaver = require('file-saver');
 
-const DocumentContainer = ({ SaveFile }) => {
-    const [value, setValue] = useState('')
+// const fs = require('../../../utils/saveToDevice');
 
-    const saveDocument = e => {
+const DocumentContainer = (props) => {
+    // const [value, setValue] = useState('');
+    
+    const saveFile = e => {
         e.preventDefault();
-        if(!value) return;
-        SaveFile(value);
+        // const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+        // const data = input;
+        const data = {
+            chapter: 'chapter one',
+            content: props.value
+        }
+        const json = JSON.stringify(data);
+    
+        const fileName = 'doc'
+        const file = new File([json], fileName, {type: 'application/json'});
+    
+        // console.log(json)
+        FileSaver.saveAs(file)
     }
 
+
+
     return (
-        <form className='document-container' onSubmit={saveDocument}>
-            {/* <textarea
+        <form id='document-container' className='document-container' onSubmit={e => saveFile(e)}>
+            <textarea
                 className='input'
-                value={value}
-                onChange={e => setValue(e.target.value)}
-            /> */}
-            <div 
-                contentEditable='true'
-                className='input'
-            >
-            </div>
+                id = 'output'
+                onChange={e => props.onChange(e.target.value)}
+            />
+            
             <button type='submit'>save</button>
         </form>
     )

@@ -7,25 +7,25 @@ import FileSelector from './FileSelector';
 import SaveFile from '../../../utils/saveToDevice';
 
 // components
-import ToolBar from './ToolBar';
+import TopBar from './TopBar';
 import SideMenu from './SideMenu';
 import DocumentContainer from './DocumentContainer';
 
 const App = () => {
-    const [visible, setDocVisibility] = useState(false);
-    
+    const [value, setValue] = useState('');
+
         return (
             <div className='main-window'>
-                <SideMenu />
+                <SideMenu chapterTitle={value.chapter} />
 
                 <div className='menu-document-container'>
-                    <ToolBar />
+                    <TopBar />
 
-                    { visible === true ? (
-                        <DocumentContainer SaveFile={SaveFile}/>
-                    ):
-                        <FileSelector/>
-                    }
+                    {/* { visible === true ? ( */}
+                        <DocumentContainer onChange={setValue} value={value} SaveFile={SaveFile}/>
+                    {/* // ): */}
+                        <FileSelector onChange={setValue}/>
+                    {/* // } */}
                 </div>
             </div>
         )
