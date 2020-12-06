@@ -1,46 +1,15 @@
-import React, { createContext, useState } from "react";
-// import PropTypes from "prop-types";
+import React from 'react';
+import FileSelector from './FileSelector';
 
-export const Context = createContext({});
-
-export const Provider = props => {
-  // Initial values are obtained from the props
-  const {
-    users: initialUsers,
-    selectedUser: initialSelectedUsers,
-    children
-  } = props;
-
-  // Use State to keep the values
-  const [users, setUsers] = useState(initialUsers);
-  const [selectedUser, setSelectedUser] = useState(initialSelectedUsers);
-
-  const addNewUser = userName => {
-    const newUser = { id: new Date().getTime().toString(), name: userName };
-    setUsers(users.concat([newUser]));
-  };
-
-  // Make the context object:
-  const usersContext = {
-    users,
-    setUsers,
-    selectedUser,
-    setSelectedUser,
-    addNewUser
-  };
-
-  // pass the value in provider and return
-  return <Context.Provider value={usersContext}>{children}</Context.Provider>;
+const ToolBar = props => {
+  const setFile = props.setFile
+    return (
+        <div className='tool-bar'>
+          <FileSelector setFile={setFile}/>
+          <button id='bold' className='tool-btn'>B</button>
+          <button id='italic' className='tool-btn'>I</button>
+        </div>
+    )
 };
 
-export const { Consumer } = Context;
-
-Provider.propTypes = {
-  users: PropTypes.array,
-  selectedUser: PropTypes.object
-};
-
-Provider.defaultProps = {
-  users: [],
-  selectedUser: {}
-};
+export default ToolBar;

@@ -56,26 +56,38 @@
     margin-top: 40px;
     // display: flex;
     // flex-direction: column;
+    height: 90%;
     max-height: 95%;
-    min-height: 300px;
-    overflow: scroll;
+    // min-height: 300px;
+    overflow: auto;
     overflow-x: hidden;
     // padding-top: 40px;
-    // width: 100%;
+    width: 230px;
 
     ul {
       list-style: none;
+      // width: 100%;
+
       .chapter-btn {
+        align-items: center;
         background: #0a0a0a;
         border: none;
         color: #fff;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        font-family: monospace;
+        font-size: 16px;
         height: 30px;
+        padding-left: 10px;
+        text-transform: uppercase;
+        white-space: nowrap;
         width: 100%;
+        // overflow-y: hidden;
       }
       .chapter-btn:hover {
         background: #252525;
         cursor: pointer;
+        visibility: visible;
+        width: auto;
       }
     }
   }

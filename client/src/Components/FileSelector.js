@@ -1,21 +1,14 @@
 import React, {useState} from 'react'
 
 const FileSelector = (props) => {
-    // const [file, setFile] = useState('');
 
-   const showFile = async (e) => {
+   const setProjectFile = async (e) => {
         e.preventDefault()
         const reader = new FileReader()
         reader.onload = async (e) => { 
           const text = (JSON.parse(e.target.result));
-          let doc = document.getElementById('output');
-          // props.onChange(text)
-          text.map((x) => 
 
-            doc.textContent = x.chapter 
-            )
-          // display opened file
-          
+          props.setFile(text); // set state
         };
         reader.readAsText(e.target.files[0]);
       }
@@ -28,17 +21,14 @@ const FileSelector = (props) => {
     return (
         <div className='file-selector'>
           <button 
-            className='file-selector-btn' 
+            className='file-selector-btn tool-btn' 
             onClick={() => getFile()}>file</button>
             <input 
-                // style={{visibility: 'hidden'}}
                 type="file" 
                 name="inputfile" 
                 id="input-file"
-                // onChange={(event) => { props.onChange(event.target.value); showFile(event) }}
-                onChange={(event) =>  showFile(event) }
+                onChange={(event) =>  setProjectFile(event) }
             />
-            {/* <p id='output'></p> */}
         </div>
     )
 }

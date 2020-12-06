@@ -20,35 +20,50 @@ const AddChapterForm = ({addChapter}) => {
     )
 }
 
+
 const SideMenu = props => {
+    const setFile = props.setFile;
+    const file = [props.file];
+    const chapters = [];
     // const [chapters, createChapters] = useState([
     //     {
     //         title: 'some chapter'
     //     }
     // ]);
 
-    const chapters = [props.chapterTitle]
 
     const addChapter = title => {
         // const newChapters = [...chapters, {title}];
         // createChapters(newChapters);
 
-        chapters.push(title)
+        // chapters.push(title)
     }
+
+    const displayChapters = props => {
+        if (file.length > 0) {
+            for (let i = 0; i <= file.length; i++) {
+                file.map(item => {
+                    item !== undefined ? chapters.push(item[i].chapter) : null ;
+                })
+            }
+        }
+    }
+    displayChapters()
 
     return (
         <div className='side-menu'>
-            <ToolBar findFile={props.findFile()}/>
+            <ToolBar setFile={setFile}/>
             {/* add chapter */}
             <div>
                 <AddChapterForm addChapter={addChapter} />
                 <div className='chapter-list'>
-                    {chapters.map((chapter, index) => (
-                        // <ChapterBtn key={index} index={index} chapter={chapter} />
+                    {
+                    chapters.map((chapter) => (
                         <ul>
-                            <li className='chapter-btn'>{chapter}</li>
+                            <li value={chapter} className='chapter-btn' onClick={() => props.displayChapter(chapter)}>{chapter}</li>
                         </ul>
-                    ))}
+                    ))
+                    }
                 </div>
             </div>
         </div>
