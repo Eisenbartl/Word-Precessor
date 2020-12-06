@@ -13,10 +13,11 @@ import DocumentContainer from './DocumentContainer';
 
 const App = () => {
     const [value, setValue] = useState('');
+    const [file , setFile] = useState([])
 
         return (
             <div className='main-window'>
-                <SideMenu chapterTitle={value.chapter} />
+                <SideMenu findFile={setFile} />
 
                 <div className='menu-document-container'>
                     <TopBar />
@@ -24,7 +25,7 @@ const App = () => {
                     {/* { visible === true ? ( */}
                         <DocumentContainer onChange={setValue} value={value} SaveFile={SaveFile}/>
                     {/* // ): */}
-                        <FileSelector onChange={setValue}/>
+                        {/* <FileSelector onChange={setValue}/> */}
                     {/* // } */}
                 </div>
             </div>

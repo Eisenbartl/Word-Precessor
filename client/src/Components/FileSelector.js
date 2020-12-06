@@ -8,18 +8,30 @@ const FileSelector = (props) => {
         const reader = new FileReader()
         reader.onload = async (e) => { 
           const text = (JSON.parse(e.target.result));
-          console.log(text)
-          props.onChange(text)
-          // display opened file
           let doc = document.getElementById('output');
-          doc.textContent = text.content;
+          // props.onChange(text)
+          text.map((x) => 
+
+            doc.textContent = x.chapter 
+            )
+          // display opened file
+          
         };
         reader.readAsText(e.target.files[0]);
       }
 
+      const getFile = () => {
+        const fileBtn = document.getElementById('input-file');
+        fileBtn.click();
+      }
+
     return (
-        <div>
+        <div className='file-selector'>
+          <button 
+            className='file-selector-btn' 
+            onClick={() => getFile()}>file</button>
             <input 
+                // style={{visibility: 'hidden'}}
                 type="file" 
                 name="inputfile" 
                 id="input-file"

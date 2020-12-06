@@ -10,16 +10,22 @@ const DocumentContainer = (props) => {
         e.preventDefault();
         // const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
         // const data = input;
-        const data = {
-            chapter: 'chapter one',
-            content: props.value
-        }
+        const data = [
+            {
+                chapter: 'chapter one',
+                content: 'Hello from chapter one.'
+            },
+            {
+                chapter: 'chapter two',
+                content: 'Here are some words from chapter two.'
+            }
+        ]
         const json = JSON.stringify(data);
     
         const fileName = 'doc'
         const file = new File([json], fileName, {type: 'application/json'});
     
-        // console.log(json)
+        console.log(json)
         FileSaver.saveAs(file)
     }
 

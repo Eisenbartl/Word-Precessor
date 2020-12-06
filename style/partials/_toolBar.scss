@@ -7,6 +7,27 @@
   padding-top: 40px;
   width: 45px;
 
+  .file-selector {
+    padding: 0;
+    margin: 0;
+    // background: pink;
+    // margin-left: 500px;
+    // display: flex;
+    // flex-direction: column;
+
+    .file-selector-btn {
+      // background-image: url("../../assets/img/folder.png");
+      // background-repeat: no-repeat;
+    }
+
+    #input-file {
+      left: 0;
+      top: 0;
+      visibility: hidden;
+      position: absolute;
+    }
+  }
+
   .tool {
     font-size: 70%;
     height: 35px;
