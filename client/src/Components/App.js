@@ -13,34 +13,31 @@ import DocumentContainer from './DocumentContainer';
 
 const App = () => {
     const [value, setValue] = useState('');
-    const openFile = (e) => {
-        e.preventDefault()
-        const reader = new FileReader()
-        reader.onload = async (e) => { 
-          const text = (e.target.result)
+    const [file , setFile] = useState();
+    const [currentChapter, setCurrentChapter] = useState();
 
-          const content = JSON.parse(text);
-          this.setState({file: content})
-          let doc = document.getElementById('output');
-          doc.textContent = content.content;
+    // on chapter tag click, run a function that sets currentChapter
+    const displayChapter = string => {
+        let chapterContent = '';
+        file.map(item => {
+            item.chapter === string ? chapterContent = item.content : null;
+        })
 
-        //   console.log(typeof(content.chapter))
-        };
-        reader.readAsText(e.target.files[0])
+        let doc = document.getElementById('output');
+        doc.textContent = chapterContent;
     }
-
         return (
             <div className='main-window'>
-                <SideMenu />
+                <SideMenu setFile={setFile} file={file} displayChapter={displayChapter}/>
 
                 <div className='menu-document-container'>
                     <TopBar />
 
-                    {/* { visible === true ? ( */}
-                        <DocumentContainer onChange={value => console.log(value)} />
-                    {/* // ): */}
-                        <FileSelector />
-                    {/* // } */}
+                    {/* { file !== undefined ? ( */}
+                        <DocumentContainer onChange={setValue} value={value} SaveFile={SaveFile} file={file}/>
+                    {/* // ):
+                        // null
+                    // } */}
                 </div>
             </div>
         )
