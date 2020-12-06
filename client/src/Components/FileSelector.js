@@ -1,32 +1,34 @@
 import React, {useState} from 'react'
 
 const FileSelector = (props) => {
-    // const [file, setFile] = useState('');
 
-   const showFile = async (e) => {
+   const setProjectFile = async (e) => {
         e.preventDefault()
         const reader = new FileReader()
         reader.onload = async (e) => { 
           const text = (JSON.parse(e.target.result));
-          console.log(text)
-          props.onChange(text)
-          // display opened file
-          let doc = document.getElementById('output');
-          doc.textContent = text.content;
+
+          props.setFile(text); // set state
         };
         reader.readAsText(e.target.files[0]);
       }
 
+      const getFile = () => {
+        const fileBtn = document.getElementById('input-file');
+        fileBtn.click();
+      }
+
     return (
-        <div>
+        <div className='file-selector'>
+          <button 
+            className='file-selector-btn tool-btn' 
+            onClick={() => getFile()}>file</button>
             <input 
                 type="file" 
                 name="inputfile" 
                 id="input-file"
-                // onChange={(event) => { props.onChange(event.target.value); showFile(event) }}
-                onChange={(event) =>  showFile(event) }
+                onChange={(event) =>  setProjectFile(event) }
             />
-            {/* <p id='output'></p> */}
         </div>
     )
 }
