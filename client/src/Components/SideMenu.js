@@ -22,19 +22,17 @@ const AddChapterForm = props => {
 
 const SideMenu = props => {
     const setFile = props.setFile;
-    const file = [props.file];
+    let file = props.file;
     const chapters = [];
 
-    const displayChapters = props => {
-        if (file.length > 0) {
-            for (let i = 0; i <= file.length + 1; i++) {
-                file.map(item => {
-                    item !== undefined ? chapters.push(item[i].chapter) : null ;
-                })
-            }
-        }
+    const displayChapters = () => {
+        file.map(item => {
+            item !== undefined ? chapters.push(item.chapter) : null ;
+        })
     }
-    displayChapters()
+    
+    file !== undefined ? displayChapters() : null;
+    
 
     return (
         <div className='side-menu'>
@@ -44,6 +42,7 @@ const SideMenu = props => {
                 <AddChapterForm addChapter={props.addChapter} />
                 <div className='chapter-list'>
                     {
+
                     chapters.map((chapter) => (
                         <ul>
                             <li value={chapter} className='chapter-btn' 
