@@ -2,32 +2,18 @@ import React, { useState } from 'react';
 import ChapterBtn from './ChapterBtn';
 import ToolBar from './ToolBar';
 
-const AddChapterForm = () => {
-    // const [value, setValue] = useState('');
-    const [words, setWords] = useState('');
+const AddChapterForm = props => {
+    const [title, setTitle] = useState('');
 
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     if(!title) return;
-    //     addChapter(title)
-    //     setTitle('');
-    // }
-
-    const addChapter = e => {
+    const addNewChapter = e => {
         e.preventDefault();
-        setValue(e.target.value)
+
+        props.addChapter(title)
     }
 
     return (
-        // <form className='add-chapter-form' onSubmit={addChapter}>
-        <form className='add-chapter-form'>
-            <input 
-                type='text' 
-                className='chapter-title-input' 
-                value={words} 
-                onChange={e => setWords(e.target.value)} 
-                placeholder='add chapter'
-            />
+        <form onSubmit={(e) => addNewChapter(e)}>
+            <input type='text' className='chapter-title-input' onChange={e => setTitle(e.target.value)} placeholder='add chapter'/>
             <button type='submit'>+</button>
         </form>
     )
@@ -38,23 +24,10 @@ const SideMenu = props => {
     const setFile = props.setFile;
     const file = [props.file];
     const chapters = [];
-    // const [chapters, createChapters] = useState([
-    //     {
-    //         title: 'some chapter'
-    //     }
-    // ]);
-
-
-    const addChapter = title => {
-        // const newChapters = [...chapters, {title}];
-        // createChapters(newChapters);
-
-        // chapters.push(title)
-    }
 
     const displayChapters = props => {
         if (file.length > 0) {
-            for (let i = 0; i <= file.length; i++) {
+            for (let i = 0; i <= file.length + 1; i++) {
                 file.map(item => {
                     item !== undefined ? chapters.push(item[i].chapter) : null ;
                 })
@@ -68,12 +41,17 @@ const SideMenu = props => {
             <ToolBar setFile={setFile}/>
             {/* add chapter */}
             <div>
-                <AddChapterForm addChapter={addChapter} />
+                <AddChapterForm addChapter={props.addChapter} />
                 <div className='chapter-list'>
                     {
                     chapters.map((chapter) => (
                         <ul>
-                            <li value={chapter} className='chapter-btn' onClick={() => props.displayChapter(chapter)}>{chapter}</li>
+                            <li value={chapter} className='chapter-btn' 
+                            onClick={() => props.displayChapter(chapter)}
+                            onDoubleClick={() => console.log('ze old double CLICK!!!')}
+                        >
+                            {chapter}
+                        </li>
                         </ul>
                     ))
                     }

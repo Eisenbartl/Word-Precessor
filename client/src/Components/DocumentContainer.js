@@ -4,23 +4,11 @@ const FileSaver = require('file-saver');
 // const fs = require('../../../utils/saveToDevice');
 
 const DocumentContainer = (props) => {
-    // const [value, setValue] = useState('');
     
     const saveFile = e => {
         e.preventDefault();
-        // const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
-        // const data = input;
-        const data = [
-            {
-                chapter: 'chapter one',
-                content: 'Hello from chapter one.'
-            },
-            {
-                chapter: 'chapter two',
-                content: 'Here are some words from chapter two.'
-            }
-        ]
-        const json = JSON.stringify(data);
+
+        const json = JSON.stringify(props.file);
     
         const fileName = 'doc'
         const file = new File([json], fileName, {type: 'application/json'});
@@ -36,7 +24,8 @@ const DocumentContainer = (props) => {
             <textarea
                 className='input'
                 id = 'output'
-                onChange={e => props.onChange(e.target.value)}
+                defaultValue={props.content.content}
+                onChange={e => props.editCurrentChapter(e.target.value) }
             />
             
             <button type='submit'>save</button>
