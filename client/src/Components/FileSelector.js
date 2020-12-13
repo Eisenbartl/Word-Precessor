@@ -22,7 +22,7 @@ const FileSelector = (props) => {
         <div className='file-selector'>
           <button 
             className='file-selector-btn tool-btn' 
-            onClick={() => getFile()}>file</button>
+            onClick={() => getFile()}>F</button>
             <input 
                 type="file" 
                 name="inputfile" 
